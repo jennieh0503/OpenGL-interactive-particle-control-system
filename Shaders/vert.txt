@@ -1,0 +1,12 @@
+#version 330 core
+layout (location = 0) in vec3 aPos;
+uniform mat4 transformation;
+uniform mat4 view;
+out vec2 fragPos;
+void main()
+{
+	fragPos = aPos.xy;
+	vec4 pos = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+	pos = view * transformation * pos;
+   gl_Position = pos;
+}
